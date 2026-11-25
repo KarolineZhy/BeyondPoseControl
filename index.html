@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beyond Pose Control</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script>document.documentElement.classList.add("js");</script>
+<script src="assets/data.js"></script>
+<script src="assets/selection.js"></script>
+<script src="assets/captions.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/intro/intro.js"></script>
+<script src="assets/intro.js"></script>
+<script src="assets/method_data.js"></script>
+<script src="assets/method_fig.js"></script>
+<script src="assets/method.js"></script>
+<noscript><style>.ns{margin:14px 0 22px}.ns figcaption{font-size:14px;color:#3b3f47;margin-bottom:6px}.ns video{width:100%;border-radius:8px;background:#000}.ns3{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}.ns3 img{width:100%;border-radius:6px}.nsnote{color:#737885;font-size:13px}.controls,.pr-chips+.primer,.abl-head{display:none}</style></noscript>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="usgamma" color-interpolation-filters="sRGB"><feComponentTransfer>
+  <feFuncR type="gamma" amplitude="1.05" exponent="0.7" offset="0"/><feFuncG type="gamma" amplitude="1.05" exponent="0.7" offset="0"/>
+  <feFuncB type="gamma" amplitude="1.05" exponent="0.7" offset="0"/></feComponentTransfer></filter></svg>
+
+
+<nav class="top"><div class="wrap">
+  <div class="brand"><i></i>Beyond Pose Control</div>
+  <a class="l" href="#primer">Data</a><a class="l" href="#results">Results</a><a class="l" href="#posefollow">Pose following</a><a class="l" href="#ablation">Ablation</a>
+  <a class="l" href="#application">Application</a><a class="l" href="#bibtex">BibTeX</a>
+</div></nav>
+
+<div class="wrap">
+<header class="hero">
+    <h1><em>Beyond</em> Pose Control:<br>Anatomically Consistent Ultrasound Video Generation</h1>
+  <div class="ideas hero-ideas">
+    <div class="idea" style="--c:var(--pose)"><div class="k">Pose</div><h4>Pose-following</h4></div>
+    <div class="idea" style="--c:var(--mem)"><div class="k">Memory</div><h4>Revisit-consistent</h4></div>
+    <div class="idea" style="--c:var(--prior)"><div class="k">Prior</div><h4>Anatomy-aware</h4></div>
+  </div>
+</header>
+
+<section id="primer" class="primer-sec">
+  <div class="eyebrow">Data</div>
+  <h2>A real hand-held sweep, compounded in 3D</h2>
+  <div id="primerBox" class="primer" style="margin-top:14px"></div><noscript><p class="nsnote">The 3D compounding animation needs JavaScript.</p></noscript>
+</section>
+
+<div class="teaser"><img src="assets/img/teaser.png" alt="teaser"></div>
+
+
+
+<section class="fade" id="method">
+  <div class="eyebrow">Method</div>
+  <div id="methodBox" style="margin-top:14px"></div><noscript><video controls autoplay muted loop playsinline preload="auto" src="assets/video/method_walkthrough.mp4" style="width:100%;border-radius:8px"></video></noscript>
+</section>
+
+<section class="fade" id="results">
+  <div class="eyebrow">01 — Results</div>
+  <h2>Baseline Comparison</h2>
+  <div class="controls">
+    <div class="seg dark" id="organTabs"></div>
+    <div class="seg" id="catTabs"></div>
+    <div class="pager" id="resPager"></div>
+  </div>
+  <div id="resultBox" style="margin-top:12px"></div><noscript><p class="nsnote">Interactive version needs JavaScript; showing plain players.</p><figure class="ns"><figcaption><b>Thyroid · Short clip</b> — columns: Ground Truth | Ours | CameraCtrl | WorldMem | Context-as-Memory | Gen3C</figcaption><video controls autoplay muted loop playsinline preload="auto" poster="assets/pool/thyroid/real/real_01.jpg" src="assets/pool/thyroid/real/real_01.mp4"></video></figure><figure class="ns"><figcaption><b>Thyroid · Short clip</b> — columns: Ground Truth | Ours | CameraCtrl | WorldMem | Context-as-Memory | Gen3C</figcaption><video controls autoplay muted loop playsinline preload="auto" poster="assets/pool/thyroid/real/real_06.jpg" src="assets/pool/thyroid/real/real_06.mp4"></video></figure><figure class="ns"><figcaption><b>Thyroid · Turn</b> — columns: Ground Truth | Ours | CameraCtrl | WorldMem | Context-as-Memory | Gen3C</figcaption><video controls autoplay muted loop playsinline preload="auto" poster="assets/pool/thyroid/real/real_12.jpg" src="assets/pool/thyroid/real/real_12.mp4"></video></figure><figure class="ns"><figcaption><b>Thyroid · Turn</b> — columns: Ground Truth | Ours | CameraCtrl | WorldMem | Context-as-Memory | Gen3C</figcaption><video controls autoplay muted loop playsinline preload="auto" poster="assets/pool/thyroid/real/real_07.jpg" src="assets/pool/thyroid/real/real_07.mp4"></video></figure><figure class="ns"><figcaption><b>Thyroid · Return (revisit)</b> — columns: Ground Truth | Ours | CameraCtrl | WorldMem | Context-as-Memory | Gen3C · top: now, bottom: same pose earlier</figcaption><video controls autoplay muted loop playsinline preload="auto" poster="assets/pool/thyroid/long/long_21.jpg" src="assets/pool/thyroid/long/long_21.mp4"></video></figure><figure class="ns"><figcaption><b>Thyroid · Return (revisit)</b> — columns: Ground Truth | Ours | CameraCtrl | WorldMem | Context-as-Memory | Gen3C · top: now, bottom: same pose earlier</figcaption><video controls autoplay muted loop playsinline preload="auto" poster="assets/pool/thyroid/long/long_08.jpg" src="assets/pool/thyroid/long/long_08.mp4"></video></figure><figure class="ns"><figcaption><b>Kidney · Short clip</b> — columns: Ground Truth | Ours | CameraCtrl | WorldMem | Context-as-Memory | Gen3C</figcaption><video controls autoplay muted loop playsinline preload="auto" poster="assets/pool/kidney/real/real_06s.jpg" src="assets/pool/kidney/real/real_06s.mp4"></video></figure><figure class="ns"><figcaption><b>Kidney · Short clip</b> — columns: Ground Truth | Ours | CameraCtrl | WorldMem | Context-as-Memory | Gen3C</figcaption><video controls autoplay muted loop playsinline preload="auto" poster="assets/pool/kidney/real/real_12s.jpg" src="assets/pool/kidney/real/real_12s.mp4"></video></figure><figure class="ns"><figcaption><b>Kidney · Turn</b> — columns: Ground Truth | Ours | CameraCtrl | WorldMem | Context-as-Memory | Gen3C</figcaption><video controls autoplay muted loop playsinline preload="auto" poster="assets/pool/kidney/real/real_22.jpg" src="assets/pool/kidney/real/real_22.mp4"></video></figure><figure class="ns"><figcaption><b>Kidney · Turn</b> — columns: Ground Truth | Ours | CameraCtrl | WorldMem | Context-as-Memory | Gen3C</figcaption><video controls autoplay muted loop playsinline preload="auto" poster="assets/pool/kidney/real/real_04.jpg" src="assets/pool/kidney/real/real_04.mp4"></video></figure><figure class="ns"><figcaption><b>Kidney · Return (revisit)</b> — columns: Ground Truth | Ours | CameraCtrl | WorldMem | Context-as-Memory | Gen3C · top: now, bottom: same pose earlier</figcaption><video controls autoplay muted loop playsinline preload="auto" poster="assets/pool/kidney/long/long_s1.jpg" src="assets/pool/kidney/long/long_s1.mp4"></video></figure><figure class="ns"><figcaption><b>Kidney · Return (revisit)</b> — columns: Ground Truth | Ours | CameraCtrl | WorldMem | Context-as-Memory | Gen3C · top: now, bottom: same pose earlier</figcaption><video controls autoplay muted loop playsinline preload="auto" poster="assets/pool/kidney/long/long_02.jpg" src="assets/pool/kidney/long/long_02.mp4"></video></figure><figure class="ns"><figcaption><b>Spine · Short clip</b> — columns: Ground Truth | Ours | CameraCtrl | WorldMem | Context-as-Memory | Gen3C</figcaption><video controls autoplay muted loop playsinline preload="auto" poster="assets/pool/spine/cshort/cshort_05.jpg" src="assets/pool/spine/cshort/cshort_05.mp4"></video></figure><figure class="ns"><figcaption><b>Spine · Short clip</b> — columns: Ground Truth | Ours | CameraCtrl | WorldMem | Context-as-Memory | Gen3C</figcaption><video controls autoplay muted loop playsinline preload="auto" poster="assets/pool/spine/real/real_15s.jpg" src="assets/pool/spine/real/real_15s.mp4"></video></figure><figure class="ns"><figcaption><b>Spine · Turn</b> — columns: Ground Truth | Ours | CameraCtrl | WorldMem | Context-as-Memory | Gen3C</figcaption><video controls autoplay muted loop playsinline preload="auto" poster="assets/pool/spine/real/real_05.jpg" src="assets/pool/spine/real/real_05.mp4"></video></figure><figure class="ns"><figcaption><b>Spine · Turn</b> — columns: Ground Truth | Ours | CameraCtrl | WorldMem | Context-as-Memory | Gen3C</figcaption><video controls autoplay muted loop playsinline preload="auto" poster="assets/pool/spine/real/real_16.jpg" src="assets/pool/spine/real/real_16.mp4"></video></figure><figure class="ns"><figcaption><b>Spine · Return (revisit)</b> — columns: Ground Truth | Ours | CameraCtrl | WorldMem | Context-as-Memory | Gen3C · top: now, bottom: same pose earlier</figcaption><video controls autoplay muted loop playsinline preload="auto" poster="assets/pool/spine/long/long_03.jpg" src="assets/pool/spine/long/long_03.mp4"></video></figure><figure class="ns"><figcaption><b>Spine · Return (revisit)</b> — columns: Ground Truth | Ours | CameraCtrl | WorldMem | Context-as-Memory | Gen3C · top: now, bottom: same pose earlier</figcaption><video controls autoplay muted loop playsinline preload="auto" poster="assets/pool/spine/long/long_15.jpg" src="assets/pool/spine/long/long_15.mp4"></video></figure></noscript>
+</section>
+
+<section class="fade" id="posefollow">
+  <div class="eyebrow">02 — Pose following</div>
+  <h2>Shift the probe, the anatomy moves accordingly</h2>
+  <div class="controls"><div class="seg dark" id="pdTabs"></div><div class="pager" id="pdPager"></div></div>
+  <div id="pdBox"></div>
+</section>
+
+<section class="fade" id="ablation">
+  <div class="eyebrow">03 — Ablation</div>
+  <h2>What each component adds</h2>
+  <div class="controls"><div class="seg dark" id="ablTabs"></div><div class="pager" id="ablPager"></div></div>
+  <div class="abl-head" id="ablHead"></div>
+  <div id="ablBox"></div><noscript><p class="nsnote">Interactive version needs JavaScript; showing plain players.</p><figure class="ns"><figcaption><b>w/o Memory · revisit does not match</b> — columns: Ground Truth | Pose only | w/o Memory | w/o Prior | Ours · top: now, bottom: same pose earlier</figcaption><video controls autoplay muted loop playsinline preload="auto" poster="assets/pool/thyroid/abl_long/abl_long_05.jpg" src="assets/pool/thyroid/abl_long/abl_long_05.mp4"></video></figure><figure class="ns"><figcaption><b>w/o Memory · revisit does not match</b> — columns: Ground Truth | Pose only | w/o Memory | w/o Prior | Ours · top: now, bottom: same pose earlier</figcaption><video controls autoplay muted loop playsinline preload="auto" poster="assets/pool/thyroid/abl_long/abl_long_03.jpg" src="assets/pool/thyroid/abl_long/abl_long_03.mp4"></video></figure><figure class="ns"><figcaption><b>w/o Prior · thyroid / carotid missing</b> — columns: Ground Truth | Pose only | w/o Memory | w/o Prior | Ours</figcaption><video controls autoplay muted loop playsinline preload="auto" poster="assets/pool/thyroid/abl_real/abl_real_01.jpg" src="assets/pool/thyroid/abl_real/abl_real_01.mp4"></video></figure><figure class="ns"><figcaption><b>w/o Prior · thyroid / carotid missing</b> — columns: Ground Truth | Pose only | w/o Memory | w/o Prior | Ours</figcaption><video controls autoplay muted loop playsinline preload="auto" poster="assets/pool/thyroid/abl_real/abl_real_10.jpg" src="assets/pool/thyroid/abl_real/abl_real_10.mp4"></video></figure><figure class="ns"><figcaption><b></b> — columns: Ground Truth | w/o Prior | Ours</figcaption><video controls autoplay muted loop playsinline preload="auto" poster="assets/pool/thyroid/abl_pd/abl_pd_01.jpg" src="assets/pool/thyroid/abl_pd/abl_pd_01.mp4"></video></figure><figure class="ns"><figcaption><b></b> — columns: Ground Truth | w/o Prior | Ours</figcaption><video controls autoplay muted loop playsinline preload="auto" poster="assets/pool/thyroid/abl_pd/abl_pd_02.jpg" src="assets/pool/thyroid/abl_pd/abl_pd_02.mp4"></video></figure><figure class="ns"><figcaption><b>Pose only · wrong anatomy + revisit mismatch</b> — columns: Ground Truth | Pose only | w/o Memory | w/o Prior | Ours · top: now, bottom: same pose earlier</figcaption><video controls autoplay muted loop playsinline preload="auto" poster="assets/pool/thyroid/abl_long/abl_long_22.jpg" src="assets/pool/thyroid/abl_long/abl_long_22.mp4"></video></figure></noscript>
+</section>
+
+<section class="fade" id="application">
+  <div class="eyebrow">04 — Application</div>
+  <h2>Better than compounding</h2>
+  <div class="cmpgrid3" id="cmpBox"></div><noscript><p class="nsnote">Interactive version needs JavaScript; showing plain players.</p><figure class="ns"><figcaption><b>Thyroid · 11° off the sweep</b> — Compounding | Ours</figcaption><div class="ns3"><img src="assets/stills/thyroid/s01_pnn.jpg"><img src="assets/stills/thyroid/s01_ours.jpg"></div></figure><figure class="ns"><figcaption><b>Kidney · 8° off the sweep</b> — Compounding | Ours</figcaption><div class="ns3"><img src="assets/stills/kidney/s27_pnn.jpg"><img src="assets/stills/kidney/s27_ours.jpg"></div></figure><figure class="ns"><figcaption><b>Kidney · 59° off the sweep</b> — Compounding | Ours</figcaption><div class="ns3"><img src="assets/stills/kidney/s26_pnn.jpg"><img src="assets/stills/kidney/s26_ours.jpg"></div></figure><figure class="ns"><figcaption><b>Spine · 11° off the sweep</b> — Compounding | Ours</figcaption><div class="ns3"><img src="assets/stills/spine/s01_pnn.jpg"><img src="assets/stills/spine/s01_ours.jpg"></div></figure><figure class="ns"><figcaption><b>Spine · 16° off the sweep</b> — Compounding | Ours</figcaption><div class="ns3"><img src="assets/stills/spine/s60_pnn.jpg"><img src="assets/stills/spine/s60_ours.jpg"></div></figure><figure class="ns"><figcaption><b>Thyroid · 60° off the sweep</b> — Compounding | Ours</figcaption><div class="ns3"><img src="assets/stills/thyroid/s176_pnn.jpg"><img src="assets/stills/thyroid/s176_ours.jpg"></div></figure></noscript>
+</section>
+
+<section class="fade" id="bibtex">
+  <div class="eyebrow">Citation</div>
+  <h2>BibTeX</h2>
+  <pre class="bib">@misc{zhou2026beyondpose,
+  title  = {Beyond Pose Control: Anatomically Consistent Ultrasound Video Generation},
+  author = {Zhou, Yue and Han, Fangxu and Wang, Tony Danjun and Navab, Nassir and Bi, Yuan},
+  year   = {2026}
+}</pre>
+</section>
+
+</div>
+
+<script>
+const pool = window.POOL || {};
+function defaults() {                                  // used until select.html exports assets/selection.js
+  const r = [], a = [];
+  for (const o of ["thyroid", "kidney", "spine"]) {
+    const P = pool[o] || {};
+    for (const cat of ["short", "return", "turn"])
+      [...(P.real || []), ...(P.long || [])].filter(m => m.cat === cat).slice(0, 3).forEach(m => r.push(ref(m)));
+  }
+  const T = pool.thyroid || {};
+  if ((T.abl_long || [])[0]) a.push(ref(T.abl_long[0]) + "|mem");
+  if ((T.abl_real || [])[9]) a.push(ref(T.abl_real[9]) + "|prior");
+  if ((T.abl_long || [])[1]) a.push(ref(T.abl_long[1]) + "|pose");
+  return {results: r, ablation: a, compound: [], stills: []};
+}
+const S = defaults();
+for (const [k, v] of Object.entries(window.SEL || {})) if (v && v.length) S[k] = v;   // empty pick list -> keep defaults
+const CAT_NOTE = {short: "Fidelity · pose following", "return": "Top: now · bottom: own output at the same pose, earlier · should match", turn: "Large rotation · long-axis view"};
+function metaOf(m) {
+  const b = [`${(m.n / FPS).toFixed(1)} s`];
+  if (m.max_rot > 5) b.push(`tilt ≤ ${m.max_rot}°`);
+  if (m.span_mm) b.push(`${m.span_mm} mm`);
+  return b.join(" · ");
+}
+function seg(el, items, onPick) {
+  el.innerHTML = "";
+  items.forEach(([k, lab], i) => {
+    const b = document.createElement("button"); b.textContent = lab;
+    b.onclick = () => { [...el.children].forEach(x => x.classList.remove("on")); b.classList.add("on"); onPick(k); };
+    el.appendChild(b); if (i === 0) b.click();
+  });
+}
+function paged(box, pager, metas) {                    // one clip at a time, numbered pager
+  pager.innerHTML = "";
+  const show = i => {
+    [...pager.querySelectorAll("button")].forEach((b, j) => b.classList.toggle("on", i === j));
+    box.querySelectorAll("video").forEach(v => v.pause());
+    box.innerHTML = ""; box.appendChild(player(metas[i], {autoplay: true, meta: metaOf(metas[i]), capKey: ref(metas[i])}));
+  };
+  if (metas.length > 1) {
+    pager.append("Example");
+    metas.forEach((_, i) => { const b = document.createElement("button"); b.textContent = i + 1; b.onclick = () => show(i); pager.appendChild(b); });
+  }
+  if (metas.length) show(0); else box.innerHTML = '<p class="cap">No clip selected yet.</p>';
+}
+
+// 01 results: organ x category
+const R = S.results.map(findMeta).filter(Boolean);
+const organs = ["thyroid", "kidney", "spine"].filter(o => R.some(m => m.organ === o));
+seg(document.getElementById("organTabs"), organs.map(o => [o, ORGAN_LABEL[o]]), o => {
+  const cats = ["short", "return", "turn"].filter(c => R.some(m => m.organ === o && m.cat === c));
+  seg(document.getElementById("catTabs"), cats.map(c => [c, CAT_LABEL[c]]), c => {
+    paged(document.getElementById("resultBox"), document.getElementById("resPager"), R.filter(m => m.organ === o && m.cat === c));
+  });
+});
+
+// 02 ablation: one focused comparison per removed component, GT | ablation | Ours (columns cropped from the 5-arm strip)
+const ABL_MODES = {
+  pose: {tab: "Pose only", arm: "pose_only", set: "abl_long", mods: [1, 0, 0], prob: "Wrong anatomy + revisit does not match", ok: "Ours: both"},
+  mem: {tab: "w/o Memory", arm: "g60n", set: "abl_long", mods: [1, 1, 0], prob: "Revisit does not match", ok: "Ours: same image on return"},
+  prior: {tab: "w/o Prior", arm: "noprior", set: "abl_real", mods: [1, 0, 1], prob: "Thyroid / carotid missing", ok: "Ours: anatomy in place"},
+  priorpd: {tab: null, arm: null, set: "abl_pd", mods: [1, 0, 1], prob: "Anatomy does not move with the probe", ok: "Ours: moves the opposite way"},
+};
+const ABL = {pose: [], mem: [], prior: [], priorpd: []}, SUB = new Map();
+for (const r of S.ablation) {
+  const [path, mode] = r.split("|"), m = findMeta(path); if (!m) continue;
+  const md = mode || (m.set === "abl_long" ? "mem" : "prior"); if (ABL[md]) ABL[md].push(m);
+}
+for (const m of ABL.priorpd) {
+  const f = m.follow || {};
+  window.CAPTIONS = window.CAPTIONS || {};
+  window.CAPTIONS[`${ref(m)}|priorpd`] = {text: "", moments: [{t: Math.max(0, m.ann_t - 1.4), dur: 2.9, label: `Probe ±${m.shift_mm} mm`,
+    text: `carotid moves ${Math.round(100 * (f.ours || 0))}% of the shift with the prior, ${Math.round(100 * (f.noprior || 0))}% without`,
+    cols: ["ours"], tag: "follows", pause: true}]};
+}
+const modBadges = mods => '<div class="mods" style="justify-content:flex-start">' + mods.map((on, i) =>
+  `<span class="${on ? "on" : "off"}" style="${on ? "background:" + MOD_STYLE[i][1] : ""}">${MOD_STYLE[i][0]}</span>`).join("") + "</div>";
+ABL.priorpd.forEach(m => { SUB.set(m, "priorpd"); ABL.prior.push(m); });   // probe-shift clips = the same w/o-Prior model, one tab
+seg(document.getElementById("ablTabs"), Object.entries(ABL_MODES).filter(([k, v]) => v.tab && ABL[k].length).map(([k, v]) => [k, v.tab]), k => {
+  const box = document.getElementById("ablBox"), pager = document.getElementById("ablPager"), metas = ABL[k];
+  pager.innerHTML = "";
+  const show = i => {
+    const sk = SUB.get(metas[i]) || k, M = ABL_MODES[sk];
+    document.getElementById("ablHead").innerHTML = `${modBadges(M.mods)}<span class="prob">${M.prob}</span><span class="ok">${M.ok}</span>`;
+    [...pager.querySelectorAll("button")].forEach((b, j) => b.classList.toggle("on", i === j));
+    box.querySelectorAll("video").forEach(v => v.pause());
+    box.innerHTML = ""; box.appendChild(player(metas[i], {autoplay: true, meta: metaOf(metas[i]), cols: M.arm ? [M.arm, "ours", "gt"] : undefined, capKey: `${ref(metas[i])}|${sk}`}));
+  };
+  if (metas.length > 1) { pager.append("Example"); metas.forEach((_, i) => { const b = document.createElement("button"); b.textContent = i + 1; b.onclick = () => show(i); pager.appendChild(b); }); }
+  show(0);
+});
+
+// 03 compounding stills: compounding re-slice <-> ours (slider) + the real frame at that plane
+const STILLS = window.STILLS || {};
+function stillMeta(r) { const [o, id] = r.split("/"); return Object.assign({organ: o}, (STILLS[o] || []).find(x => x.id === id) || {}); }
+const cb = document.getElementById("cmpBox");
+const STILL_SEL = (S.stills && S.stills.length) ? S.stills : defaultStills();
+function defaultStills() {     // until picked: 2 per organ at >= 35 deg, largest compounding-vs-ours LPIPS gap (largest angle if no LPIPS)
+  const gap = x => x.lpips_ours != null ? x.lpips_pnn - x.lpips_ours : x.angle / 1000;
+  const pick = (o, k) => (STILLS[o] || []).filter(x => x.angle >= 35).sort((a, b) => gap(b) - gap(a)).slice(0, k).map(x => `${o}/${x.id}`);
+  return [...pick("thyroid", 2), ...pick("kidney", 2), ...pick("spine", 2)];
+}
+for (const r of STILL_SEL) {
+  const m = stillMeta(r); if (!m.id) continue;
+  const base = `assets/stills/${m.organ}/${m.id}`;
+  const d = document.createElement("div"); d.className = "cmpcase";
+  d.appendChild(compareSlider(A(`${base}_pnn.jpg`), A(`${base}_ours.jpg`), "Compounding", "Ours"));
+  const f = document.createElement("div"); f.className = "cmpfoot";
+  f.innerHTML = `<div class="t"><b>${ORGAN_LABEL[m.organ] || m.organ} · ${m.organ === "thyroid_tilt" ? Math.round(m.angle) + "° tilt" : Math.round(m.angle) + "° off the sweep"}</b></div>`;
+  d.appendChild(f); cb.appendChild(d);
+}
+for (const id of S.compound || []) {        // paper-figure pairs, only if picked
+  if (!(window.SEL && window.SEL.compound && window.SEL.compound.length)) break;
+  const c = (window.COMPOUND || []).find(x => x.id === id); if (!c) continue;
+  const d = document.createElement("div"); d.className = "cmpcase";
+  d.appendChild(compareSlider(A(`assets/compound/${id}/compound.png`), A(`assets/compound/${id}/ours.png`), "Compounding", "Ours"));
+  const f = document.createElement("div"); f.className = "cmpfoot";
+  f.innerHTML = `<img src="${A(`assets/compound/${id}/acquired.png`)}"><div class="t"><b>${c.kind === "turn" ? "In-place turn" : "Tilt"} · ${Math.round(c.angle)}°</b><span>thumbnail = nearest acquired frame</span></div>`;
+  d.appendChild(f); cb.appendChild(d);
+}
+
+// 00 primer
+SweepCompound(document.getElementById("primerBox"));
+MethodAnim(document.getElementById("methodBox"));
+
+// 02 pose following: the supplementary cases as video; the landmark overlay appears around the annotated frame
+{
+  const PICK = (window.SEL && window.SEL.pd) || null;
+  const PD = (PICK ? PICK.map(findMeta).filter(Boolean)
+                   : ["thyroid", "kidney", "spine"].map(o => ((pool[o] || {}).pd || []).map(m => Object.assign({}, m, {organ: o}))).flat());
+  const NAME = {cameractrl: "CameraCtrl", worldmem: "WorldMem", cam: "CaM", g3c: "Gen3C", ours: "Ours"};
+  window.CAPTIONS = window.CAPTIONS || {};
+  for (const m of PD) {                     // caption from the annotated shifts: which methods actually follow the probe
+    const f = m.follow || {}, good = Object.keys(f).filter(a => f[a] >= 0.5).sort((a, b) => f[b] - f[a]);
+    window.CAPTIONS[ref(m)] = {text: "", moments: [{t: Math.max(0, m.ann_t - 1.4), dur: 2.9, label: `Probe ±${m.shift_mm} mm`,
+      text: `${m.landmark} should move the opposite way · follows: ${good.map(a => NAME[a]).join(", ") || "none"}`, cols: good, tag: "follows", pause: true}]};
+  }
+  const organs = ["thyroid", "kidney", "spine"].filter(o => PD.some(m => m.organ === o));
+  seg(document.getElementById("pdTabs"), organs.map(o => [o, ORGAN_LABEL[o]]), o => {
+    const ms = PD.filter(m => m.organ === o), box = document.getElementById("pdBox"), pager = document.getElementById("pdPager");
+    pager.innerHTML = "";
+    const show = i => {
+      [...pager.querySelectorAll("button")].forEach((b, j) => b.classList.toggle("on", i === j));
+      box.querySelectorAll("video").forEach(v => v.pause());
+      box.innerHTML = ""; box.appendChild(player(ms[i], {autoplay: true, meta: `${(ms[i].n / FPS).toFixed(1)} s · probe ±${ms[i].shift_mm} mm`, capKey: ref(ms[i])}));
+    };
+    if (ms.length > 1) { pager.append("Example"); ms.forEach((_, i) => { const b = document.createElement("button"); b.textContent = i + 1; b.onclick = () => show(i); pager.appendChild(b); }); }
+    show(0);
+  });
+}
+
+// cosmetics: nav border on scroll, fade-in sections, active nav link
+const nav = document.querySelector("nav.top");
+addEventListener("scroll", () => nav.classList.toggle("scrolled", scrollY > 10));
+const fio = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add("in")), {threshold: 0.08});
+document.querySelectorAll(".fade").forEach(s => fio.observe(s));
+setTimeout(() => document.querySelectorAll(".fade").forEach(s => s.classList.add("in")), 1500);   // never leave a section hidden (embedded viewers, no scroll events)
+const links = [...document.querySelectorAll("nav a.l")];
+const sio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) links.forEach(l => l.classList.toggle("on", l.hash === "#" + e.target.id)); }), {rootMargin: "-45% 0px -50% 0px"});
+document.querySelectorAll("section[id]").forEach(s => sio.observe(s));
+</script>
+</body>
+</html>
